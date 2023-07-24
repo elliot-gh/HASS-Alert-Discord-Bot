@@ -1,0 +1,16 @@
+{
+  "name": "hass-alert-discord-bot",
+  "version": "1.0.0",
+  "repository": "git@github.com:elliot-gh/HASS-Alert-Discord-Bot.git",
+  "author": "elliot-gh",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "packageManager": "yarn@3.5.1",
+  "engines": {
+    "node": ">=18.15.0"
+  },
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
+}

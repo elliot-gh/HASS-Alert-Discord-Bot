@@ -1,0 +1,18 @@
+# the command name that enables an alert
+# if you change this, you will need to reregister commands
+commandName: alert
+
+# the command description for the command that enables an alert
+description: Please only use if regular pings aren't working
+
+# should be an array similar to the following
+alertableUsers:
+  - friendlyName: examplename # friendly name shown in command suggestions
+    userId: "123" # discord user id of user to alert
+    enabled: true # whether or not alerts are enabled for the user
+    title: Alert # title of the alert message (should be <25 characters)
+    message: Someone needs your attention # message of the alert (should be <150 characters)
+    alertOnWebhook: http://localhost:8123/api/webhook/on1 # home assistant webhook url that enables alert
+    alertOffWebhook: http://localhost:8123/api/webhook/on2 # home assistant webhook url that disables alert
+    allowedRoles: # array of roles allowed to enable alert
+      - "456" # discord role id
