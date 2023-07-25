@@ -1,0 +1,15 @@
+alias: "Webhook: Discord Bot - Critical Alarm Off"
+description: ""
+trigger:
+  - platform: webhook
+    allowed_methods:
+      - POST
+    local_only: true
+    webhook_id: YOUR_WEBHOOK_ID_HERE
+condition: []
+action:
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.ios_critical_alarm_state_webhook
+mode: single

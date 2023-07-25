@@ -140,7 +140,7 @@ export class HASSAlertBot extends BotWithConfig {
             const embed = new EmbedBuilder()
                 .setTitle("Alert enabled")
                 .setDescription(`You have enabled an alert for <@${targetUserId}>.\n`
-                    + `To disable it, <@${targetUserId}> must use command ${this.slashStop.name} with the following code: \`${disableCode}\``)
+                    + `To disable it, <@${targetUserId}> must use command \`/${this.slashStop.name}\` with the following code: \`${disableCode}\``)
                 .setColor(0x00FF00);
 
             const replyInteraction = await interaction.reply({

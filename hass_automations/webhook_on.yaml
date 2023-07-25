@@ -1,0 +1,42 @@
+alias: "Webhook: Discord Bot - Critical Alarm On"
+description: ""
+trigger:
+  - platform: webhook
+    allowed_methods:
+      - POST
+    local_only: true
+    webhook_id: YOUR_WEBHOOK_ID_HERE
+condition: []
+action:
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.ios_critical_alarm_state_webhook
+  - service: automation.trigger
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.turn_on_all_lights
+  - repeat:
+      until:
+        - condition: state
+          entity_id: input_boolean.ios_critical_alarm_state_webhook
+          state: "off"
+      sequence:
+        - service: notify.MOBILE_APP_ID_HERE
+          data:
+            title: "{{ trigger.json.title }}"
+            message: "{{ trigger.json.message }}"
+            data:
+              push:
+                sound:
+                  name: Update.caf
+                  critical: 1
+                  volume: 1
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 15
+            milliseconds: 0
+    enabled: true
+mode: single
